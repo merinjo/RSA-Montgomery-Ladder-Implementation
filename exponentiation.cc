@@ -30,7 +30,7 @@ int open_memory(void);
 void seek_memory(int fd, unsigned long offset);
 
 // Function Definitions
-
+// adding test comments
 inline void clflush(volatile void *p, unsigned int size)
 {
    for(unsigned int i=0; i<size; i+=CL_SIZE)
@@ -91,7 +91,7 @@ void shift_exp (unsigned char* x)
       if ((array_to_shift[i-1] & 0x80))		//Checking the msb of (i)th byte
       {
          array_to_shift[i]++;
-      }			
+      }
    }
    array_to_shift[0] = array_to_shift[0] << 1;
 
@@ -120,7 +120,7 @@ void shift_base (unsigned char* x)
       if ((array_to_shift[i-1] & 0x80))		//Checking the msb of (i)th byte
       {
          array_to_shift[i]++;    // Shifting the msb of (i)th byte to lsb of (i+1)th byte
-      }			
+      }
    }
 
    array_to_shift[0] = array_to_shift[0] << 1;
@@ -188,7 +188,7 @@ void multiply_add (unsigned char* result, unsigned char* x, unsigned char* y)
    while (end < SIZE)
    {
       for ( int j = 0; j < mask_size; j++)
-      {	
+      {
          if ((y[i] & masks[j]))	// To check Y's LSB is one or not
          {
             add(array_r, array_x);
@@ -291,14 +291,14 @@ int main()
 
    memset(backup_exp, 0x00, 128);    // 128 Bytes or 1024 Bits fixed for Exponent
    load_file("exp.txt", backup_exp);
-   
+
    // Printing the given input of Base and Exponent
    int cntr = 0;
    /*
       printf("base is: ");
       for ( int i = (SIZE-1); i > 0; i--)
       {
-      if (base[i] == 0x00 && base[i-1] != 0x00) 
+      if (base[i] == 0x00 && base[i-1] != 0x00)
       {
       cntr++;
       }
@@ -340,7 +340,7 @@ int main()
    seek_memory(mem_fd_result, offset_result);
    unsigned physical_addr_result = (page_frame_number_result << PAGE_SHIFT) + distance_from_page_boundary_result;
    printf("\nPrinting Result Information:\n");
-   printf("Virtual Address is: %p\n", (void*)(result)); 
+   printf("Virtual Address is: %p\n", (void*)(result));
    printf("Physical Address is: %p\n", (void*)(physical_addr_result));
    close(mem_fd_result);
 
@@ -353,13 +353,13 @@ int main()
    seek_memory(mem_fd, offset);
    unsigned physical_addr = (page_frame_number << PAGE_SHIFT) + distance_from_page_boundary;
    printf("\nPrinting Base Information:\n");
-   printf("Virtual Address is: %p\n", (void*)(base)); 
+   printf("Virtual Address is: %p\n", (void*)(base));
    printf("Physical Address is: %p\n", (void*)(physical_addr));
    close(mem_fd);
 
    int n = 0;
    /////////////////////////////////////////////////// Implementation of Montgomery Ladder //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   
+
    while(1)
    {
       counter = 0;
@@ -393,7 +393,7 @@ int main()
       int f =0;
       while (counter < ((SIZE/2)*8))
       {
-         bool check  = (exp[(SIZE/2)-1] & 0x80)? true : false; // checking the MSB of exponent 
+         bool check  = (exp[(SIZE/2)-1] & 0x80)? true : false; // checking the MSB of exponent
 
          if(check == true) // bit is 1
          {
@@ -422,7 +422,7 @@ int main()
          counter++;
 
       }
-      
+
       gettimeofday(&end, NULL);
       diff += ((double) (end.tv_usec - start.tv_usec) / 1000000 + (double) (end.tv_sec - start.tv_sec));
       printf("Total Time = %f\n", diff);
@@ -445,7 +445,7 @@ int main()
         num++;
         }
         }
-        printf("\n");		    
+        printf("\n");
 
       file_num++;
       if(file_num > 3)
