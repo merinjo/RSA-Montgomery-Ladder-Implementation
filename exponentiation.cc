@@ -30,7 +30,7 @@ int open_memory(void);
 void seek_memory(int fd, unsigned long offset);
 
 // Function Definitions
-// adding test comments
+// adding test
 inline void clflush(volatile void *p, unsigned int size)
 {
    for(unsigned int i=0; i<size; i+=CL_SIZE)
